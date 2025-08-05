@@ -2,8 +2,6 @@ FROM php:7.2-apache-buster
 
 RUN sed -i 's/http:\/\/deb.debian.org/http:\/\/archive.debian.org/g' /etc/apt/sources.list \
     && sed -i 's/http:\/\/security.debian.org\/debian-security/http:\/\/archive.debian.org\/debian-security/g' /etc/apt/sources.list
-
-    
 # Zainstaluj wymagane pakiety systemowe i rozszerzenia PHP + Imagick
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     imagemagick \
@@ -26,7 +24,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     libc-client-dev \
     libkrb5-dev \
     libmagickwand-dev --no-install-recommends \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-configure gd \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install \
         gd \
