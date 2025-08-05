@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:7.2-apache
 
 # Zainstaluj wymagane pakiety systemowe i rozszerzenia PHP + Imagick
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
