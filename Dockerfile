@@ -1,5 +1,9 @@
-FROM php:7.2-apache
+FROM php:7.2-apache-buster
 
+RUN sed -i 's/http:\/\/deb.debian.org/http:\/\/archive.debian.org/g' /etc/apt/sources.list \
+    && sed -i 's/http:\/\/security.debian.org\/debian-security/http:\/\/archive.debian.org\/debian-security/g' /etc/apt/sources.list
+
+    
 # Zainstaluj wymagane pakiety systemowe i rozszerzenia PHP + Imagick
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     imagemagick \
